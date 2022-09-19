@@ -73,9 +73,9 @@ PgDn & m:: Send,{y up}
 
 ;for tapstrap exchange ime
 
-End::
-    if(IME_Get())
-    { ans := IME_SET(0) }
-    else
-    { ans := IME_SET(1) }
-    Return
+;End::
+;    if(IME_Get())
+;    { ans := IME_SET(0) }
+;    else
+;    { ans := IME_SET(1) }
+;    Return
