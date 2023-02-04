@@ -1,8 +1,15 @@
-vkf0::Send,{Blind}{BS}
-;replace esc key
 
-PgUp & x::Send,{Blind}{BS}
+;replace esc key
+vk1d & x::
+PgUp & x::
+vkf0::
+Send,{Blind}{BS}
+Return
+
 PgUp::Space
+vkf0::Space
+
+vkf2::Send, {Blind}{vkf3}
 
 IME_Setting()
 {
@@ -17,13 +24,13 @@ IME_Setting()
         Send,{Blind}{Esc}
     }
 }
-
     ;無変換キーを押した時、IMEオンならオフに変更,関数はLibファイルから読み込んでいる   
 vk1d::
 PgDn::
 IME_Setting()
 Return
-; Return
+
+
 ;mouse move 
 ;こんな関数使い立ったけど、使えなかった。
 /*
@@ -35,19 +42,12 @@ switching_by_shift(){
     Return move
 ヒラギノ角ゴシック}
 */
-keyDown()
-{
-    Send, #Down
-}
-vk1d & u::keyDown()
-PgDn & u::keyDown()
 
-keyUp()
-{
-    Send, #UP
-}
-PgDn & i::keyUp()
-vk1d & i::keyUp()
+vk1d & u::#Down
+PgDn & u::#Down
+
+PgDn & i::#UP
+vk1d & i::#UP
 
 mouseUP(){
     If GetKeyState("Shift", "P") 
@@ -56,8 +56,10 @@ mouseUP(){
             amount_of_move = 20
     MouseMove  -amount_of_move, 0, 0 , R
 }
-PgDn & o::mouseUP()
-vk1d & o::mouseUP()
+PgDn & o::
+vk1d & o::
+mouseUP()
+Return
 
 mouseDown(){
 
@@ -67,41 +69,25 @@ mouseDown(){
             amount_of_move = 20
     MouseMove amount_of_move, 0,  0 , R
 }
-PgDn & p::mouseDown()
+PgDn & p::
+vk1d & p::
+mouseDown()
+Return
+
+PgDn & r::
+vk1d & r::
+MouseClick Right
+Return
+
+PgDn & t::
+vk1d & t::
+MouseClick Left
+Return
 
 
-mouseRclick(){
-    ; Send,{RIGHT}
-    MouseClick Right
-}
-PgDn & r:: mouseRclick()
-vk1d & r:: mouseRclick()
-
-mouseLclick(){
-    MouseClick LEFt
-}
-PgDn & t:: mouseLclick()
-vk1d & t:: mouseLclick()
-
-
-
-changeWindowForword(){
-    Send,{ShiftAltTab}
-}
 PgDn & d::ShiftAltTab
 vk1d & d::ShiftAltTab
-; PgDn & d::changeWindowForword()
-; vk1d & d::changeWindowForword()
 
-; PgDn & d::
-; vk1d & d::
-; changeWindowForword()
-; Return
-
-changeWindowBack(){
-    Send,{AltTab}
-    ; AltTab
-}
 PgDn & f::AltTab
 vk1d & f::AltTab
 ; PgDn & f::changeWindowBack()
@@ -110,16 +96,27 @@ vk1d & f::AltTab
 
 ;operate like vim
 PgDn & h::Send,{Blind}{Left}
+vk1d & h::Send,{Blind}{Left}
+
 PgDn & j::Send,{Blind}{Down}
+vk1d & j::Send,{Blind}{Down}
+
 PgDn & k::Send,{Blind}{Up}
+vk1d & k::Send,{Blind}{Up}
+
 PgDn & l::Send,{Blind}{Right}
+vk1d & l::Send,{Blind}{Right}
 
 
 ;set active window in the foreground
 PgDn & s::  Winset, Alwaysontop, , A
+vk1d & s::  Winset, Alwaysontop, , A
 
-PgDn & n:: Send,{y down}
-PgDn & m:: Send,{y up}
+PgDn & n:: PgDn
+vk1d & n:: PgDn
+
+PgDn & m:: PgUp
+vk1d & m:: PgUp
 
 
 ;for tapstrap exchange ime
