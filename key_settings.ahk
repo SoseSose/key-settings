@@ -1,11 +1,11 @@
-
+vkf0::Send,{Blind}{BS}
 ;replace esc key
 
 PgUp & x::Send,{Blind}{BS}
 PgUp::Space
 
-PgDn::
-    ;無変換キーを押した時、IMEオンならオフに変更,関数はLibファイルから読み込んでいる   
+IME_Setting()
+{
     if(IME_Get())
     {
         ans := IME_SET(0)
@@ -16,9 +16,14 @@ PgDn::
     {
         Send,{Blind}{Esc}
     }
-    Return
+}
 
-
+    ;無変換キーを押した時、IMEオンならオフに変更,関数はLibファイルから読み込んでいる   
+vk1d::
+PgDn::
+IME_Setting()
+Return
+; Return
 ;mouse move 
 ;こんな関数使い立ったけど、使えなかった。
 /*
@@ -30,32 +35,78 @@ switching_by_shift(){
     Return move
 ヒラギノ角ゴシック}
 */
-PgDn & u::#Down
-PgDn & i::#UP
-PgDn & o::
+keyDown()
+{
+    Send, #Down
+}
+vk1d & u::keyDown()
+PgDn & u::keyDown()
+
+keyUp()
+{
+    Send, #UP
+}
+PgDn & i::keyUp()
+vk1d & i::keyUp()
+
+mouseUP(){
     If GetKeyState("Shift", "P") 
             amount_of_move = 50
     else
             amount_of_move = 20
     MouseMove  -amount_of_move, 0, 0 , R
-    Return
-PgDn & p::
+}
+PgDn & o::mouseUP()
+vk1d & o::mouseUP()
+
+mouseDown(){
+
     If GetKeyState("Shift", "P") 
             amount_of_move = 50
     else
             amount_of_move = 20
     MouseMove amount_of_move, 0,  0 , R
-    Return
+}
+PgDn & p::mouseDown()
 
 
-PgDn & r:: MouseClick RIGHT
-PgDn & t:: MouseClick LEFT
+mouseRclick(){
+    ; Send,{RIGHT}
+    MouseClick Right
+}
+PgDn & r:: mouseRclick()
+vk1d & r:: mouseRclick()
+
+mouseLclick(){
+    MouseClick LEFt
+}
+PgDn & t:: mouseLclick()
+vk1d & t:: mouseLclick()
 
 
 
-
+changeWindowForword(){
+    Send,{ShiftAltTab}
+}
 PgDn & d::ShiftAltTab
+vk1d & d::ShiftAltTab
+; PgDn & d::changeWindowForword()
+; vk1d & d::changeWindowForword()
+
+; PgDn & d::
+; vk1d & d::
+; changeWindowForword()
+; Return
+
+changeWindowBack(){
+    Send,{AltTab}
+    ; AltTab
+}
 PgDn & f::AltTab
+vk1d & f::AltTab
+; PgDn & f::changeWindowBack()
+; vk1d & f::changeWindowBack()
+; Return
 
 ;operate like vim
 PgDn & h::Send,{Blind}{Left}
