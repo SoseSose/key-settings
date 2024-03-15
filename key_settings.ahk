@@ -32,7 +32,7 @@ Return
 
 
 ;mouse move 
-;こんな関数使い立ったけど、使えなかった。
+;こんな関数使いたかったけど、使えなかった。
 /*
 switching_by_shift(){
     If GetKeyState("Shift", "P") 
@@ -118,12 +118,3 @@ vk1d & n:: PgDn
 PgDn & m:: PgUp
 vk1d & m:: PgUp
 
-
-;for tapstrap exchange ime
-
-;End::
-;    if(IME_Get())
-;    { ans := IME_SET(0) }
-;    else
-;    { ans := IME_SET(1) }
-;    Return
