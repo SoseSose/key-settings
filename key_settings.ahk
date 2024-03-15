@@ -19,7 +19,7 @@ PgUp::
 Return
 ;replace esc key
 
-; PgDn::Space
+PgDn::Space
 PgDn & x::
     send,{Blind}{BS}
 Return
@@ -70,6 +70,10 @@ PgDn & l::Send,{Blind}{Right}
 ;set active window in the foreground
 PgDn & s:: Winset, Alwaysontop, , A
 
-PgDn & n:: PgDn
-PgDn & m:: PgUp
+PgDn & n:: 
+send {WheelDown 1}
+return
+PgDn & m:: 
+send {WheelUp 1}
+return
 
