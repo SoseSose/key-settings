@@ -77,6 +77,20 @@ PgDn & m::
     send {WheelUp 1}
 return
 
+PgDn & v::
+Loop, 30
+{
+    Send,{Down}
+}
+Return
+
+PgDn & b::
+Loop, 30
+{
+    Send,{Up}
+}
+Return
+
 1::+1
 2::+2
 3::+3
