@@ -77,14 +77,14 @@ PgDn & m::
     send {WheelUp 1}
 return
 
-PgDn & v::
+PgDn & b::
 Loop, 30
 {
     Send,{Down}
 }
 Return
 
-PgDn & b::
+PgDn & v::
 Loop, 30
 {
     Send,{Up}
