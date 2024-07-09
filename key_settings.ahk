@@ -1,31 +1,34 @@
 
+;MD_Barroco770の無変換はFn押しながらじゃないと反応しないので,マクロで無変換→無変換+Fnに置き換えて置くこと
+;またノートpcではそうでもないがbarrocoは左の変換キーが届きづらいので左のSpaceキーも変換キーに置き換えて置くこと
 IME_Setting()
 {
     if(IME_Get())
     {
         ans := IME_SET(0)
-        Sleep 10
-        Send,{Blind}{Esc}
     }
     else
-    {
-        Send,{Blind}{Esc}
+    {   
+        ans := IME_SET(1)
     }
 }
 ;無変換キーを押した時、IMEオンならオフに変更,関数はLibファイルから読み込んでいる   
 
-PgUp::
-    IME_Setting()
-Return
-;replace esc key
+;vkf0 = CapsLock
+vkf0:: Send {BackSpace}
 
-PgDn::Space
-PgDn & x::
+ 
+SC079::IME_Setting()
+Return
+
+
+SC07B::Esc
+SC07B & x::
     send,{Blind}{BS}
 Return
 
-PgDn & u::#Down
-PgDn & i::#UP
+SC07B & u::#Down
+SC07B & i::#UP
 
 mouseUP(){
     If GetKeyState("Shift", "P") 
@@ -34,7 +37,7 @@ mouseUP(){
         amount_of_move = 20
     MouseMove -amount_of_move, 0, 0 , R
 }
-PgDn & o::
+SC07B & o::
     mouseUP()
 Return
 
@@ -46,45 +49,45 @@ mouseDown(){
         amount_of_move = 20
     MouseMove amount_of_move, 0, 0 , R
 }
-PgDn & p::
+SC07B & p::
     mouseDown()
 Return
 
-PgDn & r::
+SC07B & r::
     MouseClick Right
 Return
 
-PgDn & t::
+SC07B & t::
     MouseClick Left
 Return
 
-PgDn & d::ShiftAltTab
-PgDn & f::AltTab
+SC07B & d::ShiftAltTab
+SC07B & f::AltTab
 
 ;operate like vim
-PgDn & h::Send,{Blind}{Left}
-PgDn & j::Send,{Blind}{Down}
-PgDn & k::Send,{Blind}{Up}
-PgDn & l::Send,{Blind}{Right}
+SC07B & h::Send,{Blind}{Left}
+SC07B & j::Send,{Blind}{Down}
+SC07B & k::Send,{Blind}{Up}
+SC07B & l::Send,{Blind}{Right}
 
 ;set active window in the foreground
-PgDn & s:: Winset, Alwaysontop, , A
+SC07B & s:: Winset, Alwaysontop, , A
 
-PgDn & n:: 
+SC07B & n:: 
     send {WheelDown 1}
 return
-PgDn & m:: 
+SC07B & m:: 
     send {WheelUp 1}
 return
 
-PgDn & b::
+SC07B & b::
 Loop, 30
 {
     Send,{Down}
 }
 Return
 
-PgDn & v::
+SC07B & v::
 Loop, 30
 {
     Send,{Up}
