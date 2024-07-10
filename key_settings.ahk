@@ -1,6 +1,7 @@
 
 ;MD_Barroco770の無変換はFn押しながらじゃないと反応しないので,マクロで無変換→無変換+Fnに置き換えて置くこと
 ;またノートpcではそうでもないがbarrocoは左の変換キーが届きづらいので左のSpaceキーも変換キーに置き換えて置くこと
+
 IME_Setting()
 {
     if(IME_Get())
@@ -8,50 +9,27 @@ IME_Setting()
         ans := IME_SET(0)
     }
     else
-    {   
+    { 
         ans := IME_SET(1)
     }
 }
-;無変換キーを押した時、IMEオンならオフに変更,関数はLibファイルから読み込んでいる   
-
-;vkf0 = CapsLock
-vkf0:: Send {BackSpace}
-
- 
 SC079::IME_Setting()
 Return
+;無変換キーを押した時、IMEオンならオフに変更,関数はLibファイルから読み込んでいる
 
+;vkf0はCapsLock
+vkf0:: Send {BackSpace}
 
+;SC07Bは変換キー
 SC07B::Esc
 SC07B & x::
     send,{Blind}{BS}
 Return
 
+SC07B & y::#Left
 SC07B & u::#Down
-SC07B & i::#UP
-
-mouseUP(){
-    If GetKeyState("Shift", "P") 
-        amount_of_move = 50
-    else
-        amount_of_move = 20
-    MouseMove -amount_of_move, 0, 0 , R
-}
-SC07B & o::
-    mouseUP()
-Return
-
-mouseDown(){
-
-    If GetKeyState("Shift", "P") 
-        amount_of_move = 50
-    else
-        amount_of_move = 20
-    MouseMove amount_of_move, 0, 0 , R
-}
-SC07B & p::
-    mouseDown()
-Return
+SC07B & i::#Up
+SC07B & o::#Right
 
 SC07B & r::
     MouseClick Right
@@ -81,17 +59,17 @@ SC07B & m::
 return
 
 SC07B & b::
-Loop, 30
-{
-    Send,{Down}
-}
+    Loop, 30
+    {
+        Send,{Down}
+    }
 Return
 
 SC07B & v::
-Loop, 30
-{
-    Send,{Up}
-}
+    Loop, 30
+    {
+         Send,{Up} 
+         }
 Return
 
 ;数字キーと記号キーを入れ替え
