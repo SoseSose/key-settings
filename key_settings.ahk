@@ -1,3 +1,4 @@
+#SingleInstance,Force
 
 ;MD_Barroco770の無変換はFn押しながらじゃないと反応しないので,マクロで無変換→無変換+Fnに置き換えて置くこと
 ;またノートpcではそうでもないがbarrocoは左の変換キーが届きづらいので左のSpaceキーも変換キーに置き換えて置くこと
@@ -93,3 +94,38 @@ Return
 ; +7::Send, 7
 ; +8::Send, 8
 ; +9::Send, 9
+
+; Send {！}::!
+
+NoIMEInput(key){
+    IME_SET(0)
+    Send, %key%
+    IME_SET(1)!
+}
+
+#IF IME_Get()
+0::NoIMEInput("0")
+1::NoIMEInput("1")
+2::NoIMEInput("2")
+3::NoIMEInput("3")
+4::NoIMEInput("4")
+5::NoIMEInput("5")
+6::NoIMEInput("6")
+7::NoIMEInput("7")
+8::NoIMEInput("8")
+9::NoIMEInput("9")
+
+; "を押すと2個の"が勝手に出てきても特にタイプ数が変わることが少ないので不要
+; +2::
+;     NoIMEInput("+2")
+;     NoIMEInput("+2")""
+; Return
+
+
+-::NoIMEInput("-")
+^::NoIMEInput("^")
+\::NoIMEInput("\")
+@::NoIMEInput("@")
+
+#IF
+
