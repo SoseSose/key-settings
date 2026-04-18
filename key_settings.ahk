@@ -94,80 +94,80 @@ NoIMEInput(key){
 }
 
 ; imeがオンの時も記号は半角で入力されるように
-#HotIf IME_GET()
-0::NoIMEInput("0")
-1::NoIMEInput("1")
-2::NoIMEInput("2")
-3::NoIMEInput("3")
-4::NoIMEInput("4")
-5::NoIMEInput("5")
-6::NoIMEInput("6")
-7::NoIMEInput("7")
-8::NoIMEInput("8")
-9::NoIMEInput("9")
+; #HotIf IME_GET()
+; 0::NoIMEInput("0")
+; 1::NoIMEInput("1")
+; 2::NoIMEInput("2")
+; 3::NoIMEInput("3")
+; 4::NoIMEInput("4")
+; 5::NoIMEInput("5")
+; 6::NoIMEInput("6")
+; 7::NoIMEInput("7")
+; 8::NoIMEInput("8")
+; 9::NoIMEInput("9")
 
-;shift付きの場合も定義する必要がある．
-+0::NoIMEInput("+0")
-+1::NoIMEInput("+1")
-+2::NoIMEInput("+2")
-+3::NoIMEInput("+3")
-+4::NoIMEInput("+4")
-+5::NoIMEInput("+5")
-+6::NoIMEInput("+6")
-+7::NoIMEInput("+7")
-+8::NoIMEInput("+8")
-+9::NoIMEInput("+9")
+; ;shift付きの場合も定義する必要がある．
+; +0::NoIMEInput("+0")
+; +1::NoIMEInput("+1")
+; +2::NoIMEInput("+2")
+; +3::NoIMEInput("+3")
+; +4::NoIMEInput("+4")
+; +5::NoIMEInput("+5")
+; +6::NoIMEInput("+6")
+; +7::NoIMEInput("+7")
+; +8::NoIMEInput("+8")
+; +9::NoIMEInput("+9")
 
-; "を押すと2個の"が勝手に出てきても特にタイプ数が変わることが少ないので不要
-; +2::
-;     NoIMEInput("+2")
-;     NoIMEInput("+2")""
-; Return
+; ; "を押すと2個の"が勝手に出てきても特にタイプ数が変わることが少ないので不要
+; ; +2::
+; ;     NoIMEInput("+2")
+; ;     NoIMEInput("+2")""
+; ; Return
 
-;ーだけは割と使うことがあるのでそのままにしておく
-; -::NoIMEInput("-")
-+-::NoIMEInput("+-")
+; ;ーだけは割と使うことがあるのでそのままにしておく
+; ; -::NoIMEInput("-")
+; +-::NoIMEInput("+-")
 
-^::NoIMEInput("^")
-+^::NoIMEInput("+^")
+; ^::NoIMEInput("^")
+; +^::NoIMEInput("+^")
 
-;sc07Dは右上の円¥マークの所,右下の\マークの所と混同して解釈されるのでキーコードで設定
-sc07D::NoIMEInput("¥")
-+sc07D::NoIMEInput("|")
+; ;sc07Dは右上の円¥マークの所,右下の\マークの所と混同して解釈されるのでキーコードで設定
+; sc07D::NoIMEInput("¥")
+; +sc07D::NoIMEInput("|")
 
-@::NoIMEInput("@")
-+@::NoIMEInput("+@")
+; @::NoIMEInput("@")
+; +@::NoIMEInput("+@")
 
-[::NoIMEInput("[")
-+[::NoIMEInput("+[")
+; [::NoIMEInput("[")
+; +[::NoIMEInput("+[")
 
-]::NoIMEInput("]")
-+]::NoIMEInput("+]")
+; ]::NoIMEInput("]")
+; +]::NoIMEInput("+]")
 
-`;::NoIMEInput("`;")
-+`;::NoIMEInput("+`;")
+; `;::NoIMEInput("`;")
+; +`;::NoIMEInput("+`;")
 
-; コロンの設定，いまいち文法がわからない.
-; 修飾キーなしなら普通に使えるのになしだとコードsc028でしか使えない
-:::NoIMEInput("`:")*::
-+sc028::NoIMEInput("`:")
+; ; コロンの設定，いまいち文法がわからない.
+; ; 修飾キーなしなら普通に使えるのになしだとコードsc028でしか使えない
+; :::NoIMEInput("`:")*::
+; +sc028::NoIMEInput("`:")
 
-,::NoIMEInput(",")
-+,::NoIMEInput("+,")
+; ,::NoIMEInput(",")
+; +,::NoIMEInput("+,")
 
-.::NoIMEInput(".")
-+.::NoIMEInput("+.")
+; .::NoIMEInput(".")
+; +.::NoIMEInput("+.")
 
-?::NoIMEInput("?")
-+?::NoIMEInput("+?")
+; ?::NoIMEInput("?")
+; +?::NoIMEInput("+?")
 
-/::NoIMEInput("/")
-+/::NoIMEInput("+/")
+; /::NoIMEInput("/")
+; +/::NoIMEInput("+/")
 
-;sc073は右下の\の所,¥マークと混同して解釈されるのでキーコードで設定
-sc073::NoIMEInput("\")
-+sc073::NoIMEInput("_")
+; ;sc073は右下の\の所,¥マークと混同して解釈されるのでキーコードで設定
+; sc073::NoIMEInput("\")
+; +sc073::NoIMEInput("_")
 
-#HotIf
+; #HotIf
 
 
